@@ -1,0 +1,28 @@
+import csv  # Step 1: Import Python's built-in CSV module
+
+# Step 2: Create a list of employees (each employee is a list of values)
+employees = [
+    ["id", "name", "role"],  # Header row
+    [1, "Alice", "Developer"],
+    [2, "Bob", "Designer"],
+    [3, "Charlie", "Project Manager"]
+]
+
+# Step 3: Write the data to a CSV file
+with open("employees.csv", "w", newline="") as file:
+    writer = csv.writer(file)  # Create a writer object to write to the CSV
+    writer.writerows(employees)  # Write multiple rows from the list
+# Step 4: Read the data back from the CSV file
+with open("employees.csv", "r") as file:
+    reader = csv.reader(file)  # Create a reader object to read the file
+    for row in reader:
+        print(row)  # Print each row as a list
+
+# Step 5: Read employees and format the output
+with open("employees.csv", "r") as file:
+    reader = csv.reader(file)
+    next(reader)  # Skip the header row
+    for row in reader:
+        emp_id, name, role = row  # Unpack values
+        print(f"Employee {name} (ID: {emp_id}) works as a {role}.")
+
