@@ -1,0 +1,11 @@
+{
+    "id": 101,
+    "name": "James",
+    "role": "Data Analyst",
+    "skills": [
+        "SQL",
+        "Excel",
+        "Python"
+    ],
+    "remote": true
+}
