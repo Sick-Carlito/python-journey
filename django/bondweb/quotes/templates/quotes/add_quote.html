@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Quote</title>
+</head>
+<body>
+    <h1>Add a New Quote</h1>
+
+    <!-- Display the form -->
+    <form method="post">
+        {% csrf_token %}  <!-- Django protection against CSRF attacks -->
+        {{ form.as_p }}  <!-- Render the form with each field wrapped in <p> tags -->
+        <button type="submit">Save Quote</button>
+    </form>
+
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+</body>
+</html>
