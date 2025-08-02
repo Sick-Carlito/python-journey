@@ -1,19 +1,31 @@
+{% load static %}  <!-- Load static tag -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Quote List</title>
+    <title>Quotes</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Quotes</h1>
-    {% for quote in quotes %}
-        <div>
-            <blockquote>"{{ quote.text }}"</blockquote>
-            <p>- {{ quote.author.name }} ({{ quote.category.name }})</p>
-        </div>
-        <hr>
-    {% empty %}
+
+    <h1>Quotes List</h1>
+
+    {% if quotes %}
+        {% for quote in quotes %}
+            <div class="quote-box">
+                <div class="quote-text">
+                    “{{ quote.text|truncatewords:15 }}”
+                </div>
+                <div class="quote-meta">
+                    — {{ quote.author|title }} | <strong>{{ quote.category|upper }}</strong>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
         <p>No quotes available.</p>
-    {% endfor %}
+    {% endif %}
+
 </body>
 </html>
+
 
